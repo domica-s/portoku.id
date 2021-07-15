@@ -1,13 +1,13 @@
 body {
     font-family: 'Roboto', sans-serif;
-    margin: 0;
-    background-color: #ccc3db;
-    color: #3e3e41;
+    margin: 10px;
+    background-color: #008cff;
+    color: #000000;
 }
 
 h1,
 h2,
 h3 {
     font-family: Georgia, 'Times New Roman', Times, serif;
-    color: blue;
+    color: rgb(255, 60, 0);
 }
