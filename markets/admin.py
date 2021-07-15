@@ -1,4 +1,10 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Coin
 
+# Register your models here.
+class CoinAdmin(admin.ModelAdmin):
+    list_display = ('name', 'slug', 'price')
+    list_filter = ('name',)
+
+admin.site.register(Coin, CoinAdmin)

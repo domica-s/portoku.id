@@ -18,6 +18,13 @@
             <h1>Welcome to Portoku.ID!</h1>
             <p>Graph #1</p>
         </section>
+        <section>
+            {% for coin_x in coins %}
+                <p>{{ coin_x.name }} </p>
+                <p>{{ coin_x.price }} </p>
+                <p>{{ coin_x.description }} </p>
+            {% endfor %}
+        </section>
     </main>
 </body>
 </html>
