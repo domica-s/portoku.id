@@ -15,16 +15,18 @@
     </header>
     <main>
         <section>
-            <h1>Welcome to Portoku.ID!</h1>
-            <p>Graph #1</p>
+            <h1>Welcome to Portoku.id!</h1>
+            <p>[Enter graph here]</p>
         </section>
+        <ul>
         <section>
             {% for coin_x in coins %}
-                <p>{{ coin_x.name }} </p>
-                <p>{{ coin_x.price }} </p>
-                <p>{{ coin_x.description }} </p>
+                <ol>{{ coin_x.name }}</ol>
+                <ol>{{ coin_x.price }}</ol>
+                <ol>{{ coin_x.description }}</ol>
             {% endfor %}
         </section>
+        </ul>
     </main>
 </body>
 </html>
