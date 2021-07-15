@@ -17,16 +17,16 @@
         <section>
             <h1>Welcome to Portoku.id!</h1>
             <p>[Enter graph here]</p>
+            <p>Below is the testing of displaying coin prices</p>
         </section>
-        <ul>
         <section>
             {% for coin_x in coins %}
-                <ol>{{ coin_x.name }}</ol>
-                <ol>{{ coin_x.price }}</ol>
-                <ol>{{ coin_x.description }}</ol>
+                <p>{{ coin_x.name }}</p>
+                <p>{{ coin_x.price }}</p>
+                <p>{{ coin_x.description }}</p>
+                <hr>
             {% endfor %}
         </section>
-        </ul>
     </main>
 </body>
 </html>
