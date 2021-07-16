@@ -14,9 +14,14 @@
 <body>
     <header>
         {% comment %} navigation bar {% endcomment %}
-        <nav><a href="{% url 'markets' %}">Portoku.id</a></nav>
-        <h1>Catat investasimu sekarang!</h1>
-        <hr>
+        <div class="topnav">
+            <a class="active" href="{% url 'markets' %}">Portoku.id</a>
+            <a href="{% url 'markets' %}">Home</a>
+            {% comment %} Add dropdown in markets, select stock or crypto {% endcomment %}
+            <a href="#markets">Markes</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#watchlist">Watchlist</a>
+        </div>
     </header>
     <main>
         {% block body %}{% endblock %}
