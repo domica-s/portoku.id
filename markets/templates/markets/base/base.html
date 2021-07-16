@@ -5,15 +5,21 @@
     <meta charset="UcTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Portoku.id{% endblock %}</title>
+    {% comment %} default name if not configured {% endcomment %}
+    <title>{% block title %}Portoku.id{% endblock %}</title> 
     <link rel="stylesheet" href="{% static 'markets/styles/base.css' %}">
+    {% comment %} add additional css here {% endcomment %}
     {% block site_css %}{% endblock %}
 </head>
 <body>
     <header>
+        {% comment %} navigation bar {% endcomment %}
         <nav><a href="/markets">Portoku.id</a></nav>
         <h1>Catat investasimu sekarang!</h1>
         <hr>
     </header>
+    <main>
+        {% block body %}{% endblock %}
+    </main>
 </body>
 </html>
