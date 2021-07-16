@@ -1,25 +1,19 @@
+{% extends 'markets/base/base.html' %}
+
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UcTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portoku.id - {{ coins.name }}</title>
-    <link rel="stylesheet" href="{% static 'markets/styles/base.css' %}">
+
+{% block title %}Portoku.id - {{ coins.name }}{% endblock %}
+
+{% block site_css %}
     <link rel="stylesheet" href="{% static 'markets/styles/crypto-details.css' %}">
-</head>
-<body>
-    <header>
-        <nav><a href="{% url 'markets' %}">Portoku.id</a></nav>
-        <h1>Catat investasimu sekarang!</h1>
-        <hr>
-    </header>
+{% endblock %}
+
+{% block body %}
     <section>
+        <p>Testing with extends function</p>
         <p>Below are the details of {{ coins.name }}</p>
         <p>{{ coins.name }}</p>
         <p>{{ coins.price }}</p>
         <p>{{ coins.description }}</p>
     </section>
-</body>
-</html>
+{% endblock %}
