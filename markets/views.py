@@ -10,7 +10,8 @@ def index(request):
     })
 
 def crypto_details(request, coin_slug):
+    selected_crypto = Coin.objects.get(slug=coin_slug)
     coins = Coin.objects.all()
     return render(request, 'markets/crypto-details.html', {
-        'coins' : coins,
+        'coins' : selected_crypto,
     })
