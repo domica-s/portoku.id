@@ -5,8 +5,9 @@
     <meta charset="UcTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portoku.id</title>
+    <title>{% block title %}Portoku.id{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'markets/styles/base.css' %}">
+    {% block site_css %}{% endblock %}
 </head>
 <body>
     <header>
@@ -14,17 +15,5 @@
         <h1>Catat investasimu sekarang!</h1>
         <hr>
     </header>
-    <main>
-        <section>
-            <h1>Welcome to Portoku.id!</h1>
-            <p>[Enter graph here]</p>
-            <p>Click the links below to be redirected to the respective pages</p>
-        </section>
-        <section>
-            {% for coin_x in coins %}
-                <a href="{% url 'crypto-details' coin_x.slug %}">{{ coin_x.name }}</a>
-            {% endfor %}
-        </section>
-    </main>
 </body>
 </html>

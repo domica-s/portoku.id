@@ -5,8 +5,12 @@ from .models import Coin
 
 def index(request):
     coins = Coin.objects.all()
-    num_coins = coins.count()
     return render(request, 'markets/index.html', {
         'coins': coins,
-        'num_coins': num_coins
+    })
+
+def crypto_details(request, coin_slug):
+    coins = Coin.objects.all()
+    return render(request, 'markets/crypto-details.html', {
+        'coins' : coins,
     })
