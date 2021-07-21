@@ -21,6 +21,5 @@ def crypto_details(request, coin_slug):
 
 def stock_details(request, stock_slug):
     selected_stock = Stock.objects.get(slug=stock_slug)
-    return render(request, 'markets/stock-details.html', {
-        'stocks' : getStockQuote(selected_stock.name),
-    })
+    return render(request, 'markets/stock-details.html',
+        getStockQuote(selected_stock.name))

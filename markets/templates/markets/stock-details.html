@@ -2,18 +2,21 @@
 
 {% load static %}
 
-{% block title %}Portoku.id - {{ stocks.name }}{% endblock %}
+{% block title %}Portoku.id - {{ name }}{% endblock %}
 
 {% block site_css %}
     <link rel="stylesheet" href="{% static 'markets/styles/stock-details.css' %}">
 {% endblock %}
 
 {% block body %}
+    <body>
+        <img src="data:image/png;base64,{{ data }}" alt="" height="300", width="400">
+    </body>
     <section>
         <p>Testing with extends function</p>
-        <p>Below are the details of {{ stocks.name }}</p>
-        <p>{{ stocks.name }}</p>
-        <p>{{ stocks.price }}</p>
-        <p>{{ stocks.description }}</p>
+        <p>Below are the details of <strong>{{ name }}</strong></p>
+        <p><small>{{ fullname }}</small></p>
+        <p>{{ price }}</p>
+        <p>{{ description }}</p>
     </section>
 {% endblock %}
