@@ -1,0 +1,19 @@
+{% extends 'markets/base/base.html' %}
+
+{% load static %}
+
+{% block title %}Portoku.id - {{ stocks.name }}{% endblock %}
+
+{% block site_css %}
+    <link rel="stylesheet" href="{% static 'markets/styles/stock-details.css' %}">
+{% endblock %}
+
+{% block body %}
+    <section>
+        <p>Testing with extends function</p>
+        <p>Below are the details of {{ stocks.name }}</p>
+        <p>{{ stocks.name }}</p>
+        <p>{{ stocks.price }}</p>
+        <p>{{ stocks.description }}</p>
+    </section>
+{% endblock %}

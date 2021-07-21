@@ -1,12 +1,15 @@
 from django.shortcuts import render
 
 from .models import Coin
+from .models import Stock
 # Create your views here.
 
 def index(request):
     coins = Coin.objects.all()
+    stocks = Stock.objects.all()
     return render(request, 'markets/index.html', {
         'coins': coins,
+        'stocks': stocks,
     })
 
 def crypto_details(request, coin_slug):
@@ -14,4 +17,11 @@ def crypto_details(request, coin_slug):
     coins = Coin.objects.all()
     return render(request, 'markets/crypto-details.html', {
         'coins' : selected_crypto,
+    })
+
+def stock_details(request, stock_slug):
+    selected_stock = Stock.objects.get(slug=stock_slug)
+    coins = Coin.objects.all()
+    return render(request, 'markets/stock-details.html', {
+        'stocks' : selected_stock,
     })

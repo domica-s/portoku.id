@@ -19,8 +19,15 @@
             <p>Click the links below to be redirected to the respective pages</p>
         </section>
         <section>
+            <h1>Crypto</h1>
             {% for coin_x in coins %}
                 <a href="{% url 'crypto-details' coin_x.slug %}">{{ coin_x.name }}</a>
+            {% endfor %}
+        </section>
+        <section>
+            <h1>Stocks</h1>
+            {% for stock_x in stocks %}
+                <a href="{% url 'stock-details' stock_x.slug %}">{{ stock_x.name }}</a>
             {% endfor %}
         </section>
     </main>
