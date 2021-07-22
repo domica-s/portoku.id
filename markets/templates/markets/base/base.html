@@ -18,7 +18,34 @@
 </head>
 <body>
     <header>
-       <div class="topnav">
+        <div class="topnav">
+            <h1 class="logo"></h1>
+            <nav>
+                <ul>
+                <li><a class="active" href="{% url 'homepage' %}">Portoku.id</a></li>
+                <li><a href="#markets">Markets</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#watchlist">Watchlist</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                    <li><a href="#">Welcome, {{user.username}}</a></li>
+                {% else %}
+                    <li><a class="nav-link" href="{% url 'login' %}">Login</a></li>
+                {% endif %}
+                {% comment %} <div class="dropdown">
+                    <button class="dropbtn">Markets
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="#">All</a>
+                        <a href="#">Cryptocurrencies 2</a>
+                        <a href="#">Indonesian Stocks</a>
+                    </div>
+                </div> {% endcomment %}
+                </ul>
+            </nav>
+         </div>
+       {% comment %} <div class="topnav">
             <a class="active" href="{% url 'homepage' %}">Portoku.id</a>
             <a href="{% url 'homepage' %}">Home</a>
                 <div class="dropdown show">
@@ -32,18 +59,12 @@
             <a href="#portfolio">Portfolio</a>
             <a href="#watchlist">Watchlist</a>
             {% if user.is_authenticated %}
-                <li>
-                    <a href="{% url 'logout' %}">Logout</a>
-                </li>
-                <li>
-                    <a href="#">Welcome, {{user.username}}</a>
-                </li>
-                {% else %}
-                <li>
-                    <a class="nav-link" href="{% url 'login' %}">Login</a>
-                </li>
+                <a href="{% url 'logout' %}">Logout</a>
+                <a href="#">Welcome, {{user.username}}</a>
+            {% else %}
+                <a class="nav-link" href="{% url 'login' %}">Login</a>
             {% endif %}
-        </div>
+        </div> {% endcomment %}
     </header>
     <main>
         {% block body %}{% endblock %}
