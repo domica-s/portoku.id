@@ -18,12 +18,10 @@
 </head>
 <body>
     <header>
-        {% comment %} navigation bar {% endcomment %}
-        <div class="topnav">
+       <div class="topnav">
             <a class="active" href="{% url 'homepage' %}">Portoku.id</a>
             <a href="{% url 'homepage' %}">Home</a>
-            {% comment %} Add dropdown in markets, select stock or crypto {% endcomment %}
-            <div class="dropdown show">
+                <div class="dropdown show">
                 <a class="btn btn-secondary dropdown-toggle" href="{% url 'markets' %}" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Markets</a>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -33,6 +31,18 @@
             </div>
             <a href="#portfolio">Portfolio</a>
             <a href="#watchlist">Watchlist</a>
+            {% if user.is_authenticated %}
+                <li>
+                    <a href="{% url 'logout' %}">Logout</a>
+                </li>
+                <li>
+                    <a href="#">Welcome, {{user.username}}</a>
+                </li>
+                {% else %}
+                <li>
+                    <a class="nav-link" href="{% url 'login' %}">Login</a>
+                </li>
+            {% endif %}
         </div>
     </header>
     <main>

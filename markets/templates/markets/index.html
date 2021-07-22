@@ -5,17 +5,7 @@
 {% block body %}
     <main>
         <section>
-            {% comment %} Logged in or not? {% endcomment %}
-            {% if user.is_authenticated %}
-                Hi {{ user.username }}!
-                <p><a href="{% url 'logout' %}">Log Out</a></p>
-            {% else %}
-                <p>You are not logged in</p>
-                <a href="{% url 'login' %}">Log In</a>
-            {% endif %}
-
             <h1>Welcome to Portoku.id!</h1>
-            <p>I am testing the extends function</p>
             <p>Click the links below to be redirected to the respective pages</p>
         </section>
         <section>
