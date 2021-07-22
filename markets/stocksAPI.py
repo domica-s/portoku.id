@@ -16,20 +16,23 @@ def getStockQuote(ticker):
 
     #dataframe for current 'daily' chart
     df = ticker.history(period="1d", interval="1m")
+    plt.switch_backend('AGG') #with this script, no longer execute local python
+    plt.tight_layout()
     plt.plot(df['Close'])
-    fig = plt.gcf()
+    # fig = plt.gcf()
 
     buf = io.BytesIO()
-    fig.savefig(buf, format='png')
+    plt.savefig(buf, format='png')
     buf.seek(0)
-    string = base64.b64encode(buf.read())
-    uri = urllib.parse.quote(string)
+    graph = base64.b64encode(buf.getvalue())
+    graph = graph.decode('utf-8')
+    buf.close()
 
     temp_json = {
         'name' : init_ticker,
         'slug' : init_ticker,
         'price' : closePrice,
-        'data' : uri,
+        'data' : graph,
     }
 
     return temp_json
