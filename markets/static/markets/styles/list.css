@@ -1,0 +1,18 @@
+body {
+  font-family: "Roboto", sans-serif;
+  margin: 10px;
+  background-color: #72797e;
+  color: #389720;
+}
+
+.column {
+  float: left;
+  width: 50%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}

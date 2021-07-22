@@ -13,6 +13,14 @@ def index(request):
         'stocks': stocks,
     })
 
+def market_view(request):
+    coins = Coin.objects.all()
+    stocks = Stock.objects.all()
+    return render(request, 'markets/market.html',{
+        'coins': coins, 
+        'stocks': stocks,
+    })
+
 def crypto_details(request, coin_slug):
     selected_crypto = Coin.objects.get(slug=coin_slug)
     return render(request, 'markets/crypto-details.html', {

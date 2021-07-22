@@ -1,0 +1,29 @@
+{% extends 'markets/base/base.html' %}
+
+{% load static %}
+
+{% block title %}Cryptocurrencies{% endblock %}
+
+{% block site_css %}
+    <link rel="stylesheet" href="{% static 'markets/styles/list.css' %}">
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+    <div class="column">
+        <h1>Cryptocurencies</h1>
+            {% for coin_x in coins %}
+                <a href="{% url 'crypto-details' coin_x.slug %}">{{ coin_x.name }}</a>
+                <h1></h1>
+            {% endfor %}
+    </div>
+    <div class="column">
+            <h1>Stocks</h1>
+            {% for stock_x in stocks %}
+                <a href="{% url 'stock-details' stock_x.slug %}">{{ stock_x.name }}</a>
+                <h1></h1>
+            {% endfor %}
+    </div>
+    </div>
+   
+{% endblock %}
