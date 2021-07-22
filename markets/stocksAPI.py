@@ -7,6 +7,7 @@ def getStockQuote(ticker):
     init_ticker = ticker # add upper()
     temp_ticker = init_ticker + ".JK"
     ticker = yf.Ticker(temp_ticker)
+    info = ticker.info
     hist = ticker.history(period="1h")
 
     closeDetails = hist['Close']
@@ -30,6 +31,7 @@ def getStockQuote(ticker):
 
     temp_json = {
         'name' : init_ticker,
+        'fullname' : info['shortName'],
         'slug' : init_ticker,
         'price' : closePrice,
         'data' : graph,
