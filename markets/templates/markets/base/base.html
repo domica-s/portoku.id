@@ -2,10 +2,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UcTF-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% comment %} default name if not configured {% endcomment %}
     <title>{% block title %}Portoku.id{% endblock %}</title> 
 
     <link rel="stylesheet" href="{% static 'markets/styles/base.css' %}">
@@ -47,37 +46,21 @@
                 </ul>
             </nav>
          </div>
-       {% comment %} <div class="topnav">
-            <a class="active" href="{% url 'homepage' %}">Portoku.id</a>
-            <a href="{% url 'homepage' %}">Home</a>
-            <div class="dropdown show">
-                <a class="btn btn-secondary dropdown-toggle" href="{% url 'markets' %}" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Markets</a>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <a class="dropdown-item" href="#stock">Stock</a>
-                    <a class="dropdown-item" href="#crypto">Crypto</a>
-                </div>
-            </div>
-            <a href="#portfolio">Portfolio</a>
-            <a href="#watchlist">Watchlist</a>
-            {% if user.is_authenticated %}
-                <a href="{% url 'logout' %}">Logout</a>
-                <a href="#">Welcome, {{user.username}}</a>
-            {% else %}
-                <a class="nav-link" href="{% url 'login' %}">Login</a>
-            {% endif %}
-        </div> {% endcomment %}
     </header>
     <main>
-        <div class="dropdown show">
+        {% comment %} <div class="dropdown show">
             <a class="btn btn-secondary dropdown-toggle" href="{% url 'markets' %}" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Markets</a>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                 <a class="dropdown-item" href="#stock">Stock</a>
                 <a class="dropdown-item" href="#crypto">Crypto</a>
             </div>
-        </div>
+        </div> {% endcomment %}
         {% block body %}{% endblock %}
     </main>
+    <footer>
+    </footer>
+    
+    {% block javascript %}{% endblock javascript %}
 </body>
 </html>
