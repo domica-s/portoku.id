@@ -2,17 +2,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    {% comment %}
-    <script src="jquery-2.1.4.js"></script> 
-    <script src="popper.js"></script> 
-    {% endcomment %}
     <meta charset="UcTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% comment %} default name if not configured {% endcomment %}
     <title>{% block title %}Portoku.id{% endblock %}</title> 
+
     <link rel="stylesheet" href="{% static 'markets/styles/base.css' %}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     {% comment %} add additional css here {% endcomment %}
     {% block site_css %}{% endblock %}
 </head>
@@ -23,7 +24,18 @@
             <nav>
                 <ul>
                 <li><a class="active" href="{% url 'homepage' %}">Portoku.id</a></li>
-                <li><a href="#markets">Markets</a></li>
+                <li>
+                    <div class="dropdown">
+                        <a href="{% url 'markets' %}">Markets
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                        <div class="dropdown-content">
+                            <a href="#">All</a>
+                            <a href="#">Cryptocurrencies</a>
+                            <a href="#">Indonesian Stocks</a>
+                        </div>
+                    </div>
+                </li>
                 <li><a href="#portfolio">Portfolio</a></li>
                 <li><a href="#watchlist">Watchlist</a></li>
                 {% if user.is_authenticated %}
@@ -32,23 +44,13 @@
                 {% else %}
                     <li><a class="nav-link" href="{% url 'login' %}">Login</a></li>
                 {% endif %}
-                {% comment %} <div class="dropdown">
-                    <button class="dropbtn">Markets
-                        <i class="fa fa-caret-down"></i>
-                    </button>
-                    <div class="dropdown-content">
-                        <a href="#">All</a>
-                        <a href="#">Cryptocurrencies 2</a>
-                        <a href="#">Indonesian Stocks</a>
-                    </div>
-                </div> {% endcomment %}
                 </ul>
             </nav>
          </div>
        {% comment %} <div class="topnav">
             <a class="active" href="{% url 'homepage' %}">Portoku.id</a>
             <a href="{% url 'homepage' %}">Home</a>
-                <div class="dropdown show">
+            <div class="dropdown show">
                 <a class="btn btn-secondary dropdown-toggle" href="{% url 'markets' %}" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Markets</a>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -67,11 +69,15 @@
         </div> {% endcomment %}
     </header>
     <main>
+        <div class="dropdown show">
+            <a class="btn btn-secondary dropdown-toggle" href="{% url 'markets' %}" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Markets</a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="#stock">Stock</a>
+                <a class="dropdown-item" href="#crypto">Crypto</a>
+            </div>
+        </div>
         {% block body %}{% endblock %}
     </main>
-
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>

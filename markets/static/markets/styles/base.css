@@ -72,11 +72,11 @@ nav a:hover::before {
   width: 100%;
 }
 
-/* The dropdown container */
+/* The dropdown container 
 .dropdown {
   float: left;
   overflow: hidden;
-}
+}*/
 
 /* Dropdown button */
 .dropdown .dropbtn {
