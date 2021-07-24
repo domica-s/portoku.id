@@ -18,6 +18,14 @@
 </head>
 <body>
     <header>
+        {% for message in messages %}
+        <div class="alert {{ message.tags }} alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+            {{ message }}
+        </div>
+        {% endfor %}
         <div class="topnav">
             <h1 class="logo"></h1>
             <nav>
@@ -25,11 +33,11 @@
                 <li><a class="active" href="{% url 'homepage' %}">Portoku.id</a></li>
                 <li>
                     <div class="dropdown">
-                        <a href="{% url 'markets' %}">Markets
+                        <a href="">Markets
                             <i class="fa fa-caret-down"></i>
                         </a>
                         <div class="dropdown-content">
-                            <a href="#">All</a>
+                            <a href="{% url 'markets' %}">All</a>
                             <a href="#">Cryptocurrencies</a>
                             <a href="#">Indonesian Stocks</a>
                         </div>
