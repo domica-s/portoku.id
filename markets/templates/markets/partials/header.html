@@ -1,0 +1,28 @@
+<div class="topnav">
+<h1 class="logo"></h1>
+<nav>
+    <ul>
+    <li><a class="active" href="{% url 'homepage' %}">Portoku.id</a></li>
+    <li>
+        <div class="dropdown">
+            <a href="">Markets
+                <i class="fa fa-caret-down"></i>
+            </a>
+            <div class="dropdown-content">
+                <a href="{% url 'markets' %}">All</a>
+                <a href="#">Cryptocurrencies</a>
+                <a href="#">Indonesian Stocks</a>
+            </div>
+        </div>
+    </li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#watchlist">Watchlist</a></li>
+    {% if user.is_authenticated %}
+        <li><a href="{% url 'logout' %}">Logout</a></li>
+        <li><a href="#">Welcome, {{user.username}}</a></li>
+    {% else %}
+        <li><a class="nav-link" href="{% url 'login' %}">Login</a></li>
+    {% endif %}
+    </ul>
+</nav>
+</div>
