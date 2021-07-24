@@ -10,17 +10,40 @@
 
 {% block content %}
     <body>
-        <img src="data:image/png;base64,{{ data }}" alt="" height="300", width="400">
+        <img src="data:image/png;base64,{{ data }}" alt="{{ name }} - chart" height="300", width="400">
     </body>
     <section>
         <p>Below are the details of <strong>{{ name }}</strong></p>
         <p><small>{{ fullname }}</small></p>
-        <p id="stock-price-field">{{ price }}</p>
+        <p id="price">{{ price }}</p>
         <p>{{ description }}</p>
     </section>
 {% endblock %}
 
 {% block javascript %}
     <link rel="stylesheet" href="{% static 'markets/js/getStockSpotPrice.js' %}">
+    <script>
+        var interval = 1000 * 60 * 5;
+        var webSlug = "{{ name }}"
+        $(document).ready(function() {
+            setInterval(function() {
+                $.ajax({
+                    type: 'POST',
+                    url: '{% url 'getUpdatedStockPrice' %}',
+                    data: {
+                     'slug': webSlug,
+                     'csrfmiddlewaretoken': '{{ csrf_token }}'
+                    },
+                    success: function(response) {
+                        $("#price").empty();
+                        $("#price").append(response['price']);
+                    },
+                    error: function(response) {
+                        alert("An error occured: " + response);
+                    }
+                });
+            }, interval);
+        })
+    </script>
 {% endblock %}
 
