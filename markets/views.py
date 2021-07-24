@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 from .models import Coin
 from .models import Stock
-from .stocksAPI import getFullStockName, getStockGraph, getStockSpotPrice
+from .stocksAPI import getFullStockName, getStockGraph, getStockSpotPrice, getStockSummary
 # Create your views here.
 
 def index(request):
@@ -37,7 +37,6 @@ def stock_details(request, stock_slug):
             'slug' : selected_stock.name,
             'price' : getStockSpotPrice(ticker),
             'data' : getStockGraph(ticker),
-            'description' : "placeholder for description"
-
+            'description' : getStockSummary(ticker)
         }
     )

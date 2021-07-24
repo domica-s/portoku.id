@@ -9,6 +9,12 @@ def getFullStockName(ticker):
 
     return info['shortName']
 
+def getStockSummary(ticker):
+    ticker = yf.Ticker(ticker)
+    info = ticker.info
+
+    return info['longBusinessSummary']
+
 def getStockGraph(ticker):
     ticker = yf.Ticker(ticker)
     #dataframe for current 'daily' chart

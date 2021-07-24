@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{% static 'markets/styles/stock-details.css' %}">
 {% endblock %}
 
-{% block body %}
+{% block content %}
     <body>
         <img src="data:image/png;base64,{{ data }}" alt="" height="300", width="400">
     </body>
@@ -19,3 +19,8 @@
         <p>{{ description }}</p>
     </section>
 {% endblock %}
+
+{% block javascript %}
+    <link rel="stylesheet" href="{% static 'markets/js/getStockSpotPrice.js' %}">
+{% endblock %}
+
