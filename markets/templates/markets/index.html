@@ -3,22 +3,23 @@
 {% load static %}
 
 {% block content %}
-    <main>
+    <div class="jumbotron">
         <section>
-            <h1>Welcome to Portoku.id!</h1>
+            <h1 class="display-3">Welcome to Portoku.id!</h1>
             <p>Click the links below to be redirected to the respective pages</p>
         </section>
+        <hr class="my-4">
         <section>
-            <h1>Crypto</h1>
+            <h2 class="display-4">Crypto</h2>
             {% for coin_x in coins %}
                 <a href="{% url 'crypto-details' coin_x.slug %}">{{ coin_x.name }}</a>
             {% endfor %}
         </section>
         <section>
-            <h1>Stocks</h1>
+            <h2 class="display-4">Stocks</h2>
             {% for stock_x in stocks %}
                 <a href="{% url 'stock-details' stock_x.slug %}">{{ stock_x.name }}</a>
             {% endfor %}
         </section>
-    </main>
+    </div>
 {% endblock %}
