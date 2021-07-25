@@ -36,7 +36,6 @@ def stock_view(request):
     for stock in stocks:
         ticker = stock.name + ".JK"
         stock_prices[stock.name] = getStockSpotPrice(ticker)
-    print(stock_prices)
     return render(request, 'markets/stock.html', {
         'stocks' : stocks,
         'prices' : stock_prices,

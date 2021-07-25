@@ -6,8 +6,8 @@ $(document).ready(function () {
       type: "POST",
       url: "{% url 'getUpdatedStockPrice' %}",
       data: {
-        slug: webSlug,
-        csrfmiddlewaretoken: "{{ csrf_token }}",
+        'slug': webSlug,
+        'csrfmiddlewaretoken': "{{ csrf_token }}",
       },
       success: function (response) {
         $("#price").empty();
