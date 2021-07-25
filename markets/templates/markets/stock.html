@@ -23,7 +23,7 @@
                     <tr>
                         <th scope="row">{{ forloop.counter }}</th>
                         <td><a href="{% url 'stock-details' stock_x.slug %}">{{ stock_x.fullname}} <small>${{ stock_x.name }}</small></a></td>
-                        <td><a href="{% url 'stock-details' stock_x.slug %}">{{ stock_x.price }}</a></td>
+                        <td><a href="{% url 'stock-details' stock_x.slug %}">prices["{{ stock_x.name }}"]</a></td>
                     </tr>
                 {% endfor %}
             </tbody>
