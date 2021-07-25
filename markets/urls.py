@@ -5,7 +5,9 @@ from . import views
 urlpatterns = [
     path('', views.index, name='homepage'),
     path('markets', views.market_view, name='markets'),
+    path('crypto/', views.crypto_view, name ='crypto'),
+    path('stock/', views.stock_view, name ='stock'),
     path('crypto/<slug:coin_slug>', views.crypto_details, name='crypto-details'),
     path('stock/<slug:stock_slug>', views.stock_details, name='stock-details'),
-    path('getUpdatedStockPrice', views.getUpdatedStockPrice, name='getUpdatedStockPrice')
+    path('getUpdatedStockPrice', views.getUpdatedStockPrice, name='getUpdatedStockPrice'),
 ]

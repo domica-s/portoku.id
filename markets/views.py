@@ -24,6 +24,18 @@ def market_view(request):
         'stocks': stocks,
     })
 
+def crypto_view(request):
+    coins = Coin.objects.all()
+    return render(request, 'markets/crypto.html', {
+        'coins' : coins
+    })
+
+def stock_view(request):
+    stocks = Stock.objects.all()
+    return render(request, 'markets/stock.html', {
+        'stocks' : stocks
+    })
+
 def crypto_details(request, coin_slug):
     selected_crypto = Coin.objects.get(slug=coin_slug)
     return render(request, 'markets/crypto-details.html', {

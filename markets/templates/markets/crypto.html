@@ -1,0 +1,35 @@
+{% extends 'markets/base/base.html' %}
+
+{% load static %}
+
+{% block title %}Cryptocurrencies{% endblock %}
+
+{% block site_css %}
+{% endblock %}
+
+{% block content %}
+    <h1>List of cryptocurrencies</h1>
+    <div class="table-responsive">
+        <table class="table table-striped table-hover table-bordered ">
+            <thead>
+                <tr>
+                    <th scope="col" style="width: 10%">#</th>
+                    <th scope="col" style="width: 40%">Name</th>
+                    <th scope="col" style="width: 50%">Price</th> 
+                </tr>
+            </thead>
+            <tbody>
+                {% for coin_x in coins %}
+                    <tr>
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td><a href="{% url 'crypto-details' coin_x.slug %}">{{ coin_x.fullname}} <small>${{ coin_x.name }}</small></a></td>
+                        <td><a href="{% url 'crypto-details' coin_x.slug %}">{{ coin_x.price }}</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+
+{% block javascript%}
+{% endblock %}
