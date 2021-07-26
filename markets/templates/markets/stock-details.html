@@ -28,6 +28,12 @@
         <div class="row">
             <div class="col-12"><h3>{{ fullname }}</h3></div>
         </div>
+
+        <div class="row">
+            <div class="col-6">
+                <canvas id="lineChart" class="canvas-container" height="200" width="500"></canvas>
+            </div>
+        </div>
     </div>
 
     <br>
@@ -53,10 +59,41 @@
         </div>
     </div>
 
+    
+    {% comment %}
     <img src="data:image/png;base64,{{ data }}" alt="{{ name }} - chart" height="300", width="400">
+    {% endcomment %}
+
 {% endblock %}
 
 {% block javascript %}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        var myChart = new Chart(
+            document.getElementById('lineChart'),{
+                type: 'line',
+                data : {
+                    maintainAspectRatio: true, 
+                    labels: ['January','February','March','April','May','June'],
+                    datasets: [{   
+                    label: 'My First dataset',
+                    backgroundColor: 'rgb(255, 99, 132)',
+                    borderColor: 'rgb(255, 99, 132)',
+                    data: [0, 10, 5, 2, 20, 30, 45],
+                    }],
+                },
+                options: {
+                    responsive: false,
+                    scales:{
+                        yAxes:[{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }}
+        );
+    </script>
     <script>
         var interval = 1000 * 60 * 5;
         var webSlug = "{{ name }}"
