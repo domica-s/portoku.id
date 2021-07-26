@@ -32,8 +32,8 @@
         </thead>
         <tbody>
             {% for coin in coins %}
-                <tr>
-                    <td><a href="{% url 'crypto-details' coin.slug %}">{{ coin.fullname}} <small>${{ coin.name }}</small></a></td>
+                <tr style="transform: rotate(0);">
+                    <td><a href="{% url 'crypto-details' coin.slug %}" class="stretched-link">{{ coin.fullname }} <small>${{ coin.name }}</small></a></td>
                     <td>{{ coin.price }}</td>
                     <td>NFT</td>
                     <td>USD 1 Billion</td>
