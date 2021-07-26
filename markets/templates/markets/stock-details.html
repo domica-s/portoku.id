@@ -64,7 +64,7 @@
             setInterval(function() {
                 $.ajax({
                     type: 'POST',
-                    url: '{% url 'getUpdatedStockPrice' %}',
+                    url: '{% url "getUpdatedStockPrice" %}',
                     data: {
                      'slug': webSlug,
                      'csrfmiddlewaretoken': '{{ csrf_token }}'
