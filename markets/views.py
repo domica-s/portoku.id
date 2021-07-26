@@ -33,10 +33,14 @@ def crypto_view(request):
 def stock_view(request):
     stocks = Stock.objects.all()
     stock_prices = {}
+    dummy = []
+    for i in range(100):
+        dummy.append("test")
     for stock in stocks:
         ticker = stock.name + ".JK"
         stock_prices[stock.name] = getStockSpotPrice(ticker)
     return render(request, 'markets/stock.html', {
+        'dummy' : dummy,
         'stocks' : stocks,
         'prices' : stock_prices,
     })

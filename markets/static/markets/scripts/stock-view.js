@@ -1,4 +1,6 @@
 $(document).ready(function () {
-  $("#dtBasicExample").DataTable();
-  $(".dataTables_length").addClass("bs-select");
+  //Pagination full Numbers
+  $("#paginationFullNumbers").DataTable({
+    pagingType: "full_numbers",
+  });
 });

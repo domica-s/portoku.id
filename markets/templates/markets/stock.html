@@ -8,8 +8,9 @@
 {% endblock %}
 
 {% block content %}
+    <div class = "jumbotron">
     <h1>List of cryptocurrencies</h1>
-    <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+    <table id="paginationFullNumbers" class="table" width="100%">
         <thead>
             <tr>
             <th class="th-sm">Name
@@ -29,10 +30,10 @@
             </tr>
         </thead>
         <tbody>
-            {% for stock_x in stocks %}
+            {% for i in dummy %}
                 <tr>
-                    <td>{{ stock_x.name }}</td>
-                    <td>{{ stock_x.price }}</td>
+                    <td>BBRI</td>
+                    <td>i</td>
                     <td>Banking</td>
                     <td>$ 1,000,000</td>
                     <td>54%</td>
@@ -54,6 +55,7 @@
             </tr>
         </tfoot>
     </table>
+    </div>
     
 {% endblock %}
 
