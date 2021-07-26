@@ -9,10 +9,11 @@ In this case, is it possible to have the markets bar have 2 options instead of a
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMarkets" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Markets
           </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMarkets">
+            <li><a class="dropdown-item" href="{% url 'markets' %}">All Markets</a></li>
             <li><a class="dropdown-item" href="{% url 'crypto' %}">Cryptocurrencies</a></li>
             <li><a class="dropdown-item" href="{% url 'stock' %}">Indonesian Stocks</a></li>
           </ul>
@@ -23,8 +24,20 @@ In this case, is it possible to have the markets bar have 2 options instead of a
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#">Watchlist</a>
         </li>
+        {% if user.is_authenticated %}
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownAccount" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Welcome, {{user.username}}
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownAccount">
+            <a class="nav-link active" aria-current="page" href="{% url 'logout' %}">Logout</a>
+          </ul>
+        {% else %}
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'login' %}">Login</a>
+          </li>
+        {% endif %}
       </ul>
-      <form class="d-flex">
+      <form class="d-flex justify-content-end" >
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
