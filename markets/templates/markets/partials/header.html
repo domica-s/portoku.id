@@ -1,48 +1,50 @@
-<div class="topnav">
-<h1 class="logo"></h1>
-<nav>
-    <ul>
-    <li><a class="active" href="{% url 'homepage' %}">Portoku.id</a></li>
-    <li>
-        <div class="dropdown">
-            <a href="{% url 'markets' %}">Markets
-                <i class="fa fa-caret-down"></i>
-            </a>
-            <div class="dropdown-content">
-                <a href="{% url 'crypto' %}">Cryptocurrencies</a>
-                <a href="{% url 'stock' %}">Indonesian Stocks</a>
-            </div>
-        </div>
-    </li>
-    <li><a href="#portfolio">Portfolio</a></li>
-    <li><a href="#watchlist">Watchlist</a></li>
-    {% if user.is_authenticated %}
-        <li><a href="{% url 'logout' %}">Logout</a></li>
-        <li><a href="#">Welcome, {{user.username}}</a></li>
-    {% else %}
-        <li><a class="nav-link" href="{% url 'login' %}">Login</a></li>
-    {% endif %}
-    </ul>
-</nav>
-</div>
 {% comment %} Bootstrap navbar, dynamic --> in small screens menu bar will become a hamburger bar.
 In this case, is it possible to have the markets bar have 2 options instead of an additional add? Since in mobile, there is no hover function, thus it is either click Markets to go to markets or to open the dropdown. {% endcomment %}
-{% comment %} <nav class="navbar navbar-expand-md">
-	<a class="navbar-brand" href="#">Logo</a>
-	<button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#main-navigation">
-		<span class="navbar-toggler-icon"></span>
-	</button>
-	<div class="collapse navbar-collapse" id="main-navigation">
-		<ul class="navbar-nav">
-			<li class="nav-item">
-				<a class="nav-link" href="#">Home</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="#">About</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="#">Contact</a>
-			</li>
-		</ul>
-	</div>
-</nav> {% endcomment %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">Portoku.id</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMarkets" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Markets
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMarkets">
+            <li><a class="dropdown-item" href="{% url 'markets' %}">All Markets</a></li>
+            <li><a class="dropdown-item" href="{% url 'crypto' %}">Cryptocurrencies</a></li>
+            <li><a class="dropdown-item" href="{% url 'stock' %}">Indonesian Stocks</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Portfolio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Watchlist</a>
+        </li>
+        {% if user.is_authenticated %}
+          <li class = "nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownAccount" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Welcome, {{user.username}}
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownAccount">
+              <a class="nav-link active" aria-current="page" href="{% url 'logout' %}">Logout</a>
+            </ul>
+          </li>
+        {% else %}
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'login' %}">Login</a>
+          </li>
+        {% endif %}
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <form class="form-inline">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </ul>
+    </div>
+  </div>
+</nav>
