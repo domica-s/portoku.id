@@ -2,7 +2,7 @@
 
 {% load static %}
 
-{% block title %}Cryptocurrencies{% endblock %}
+{% block title %}Stocks{% endblock %}
 
 {% block site_css %}
     <link href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css" rel="stylesheet">   
@@ -10,7 +10,7 @@
 
 {% block content %}
     <div class = "jumbotron">
-    <h1>List of cryptocurrencies</h1>
+    <h1>List of Stocks</h1>
     <table id="paginationFullNumbers" class="table table-paginate" width="100%">
         <thead>
             <tr>
@@ -31,13 +31,13 @@
             </tr>
         </thead>
         <tbody>
-            {% for i in dummy %}
+            {% for stock in stocks %}
                 <tr>
-                    <td>BBRI</td>
-                    <td>i</td>
+                    <td><a href="{% url 'stock-details' stock.slug %}">{{ stock.name}}</td>
+                    <td>Rp.{{ stock.price }}</td>
                     <td>Banking</td>
-                    <td>$ 1,000,000</td>
-                    <td>54%</td>
+                    <td>Rp.123,123,132</td>
+                    <td>12%</td>
                 </tr>
             {% endfor %}
         </tbody>

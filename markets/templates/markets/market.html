@@ -12,7 +12,7 @@
         <div class="row">
             <div class="col">
                 <div class="jumbotron">
-                    <h1>Cryptocurencies</h1>
+                    <a href="{% url 'crypto' %}" class="btn btn-primary btn-lg btn-block btn-dark" role="button">Crypto</a>
                     <hr class="my-4">
                     {% for coin_x in coins %}
                         <a href="{% url 'crypto-details' coin_x.slug %}">{{ coin_x.name }}</a>
@@ -22,7 +22,7 @@
             </div>
             <div class="col">
                 <div class="jumbotron">
-                    <h1>Stocks</h1>
+                    <a href="{% url 'stock' %}" class="btn btn-primary btn-lg btn-block btn-dark" role="button">Stocks</a>
                     <hr class="my-4">
                     {% for stock_x in stocks %}
                         <a href="{% url 'stock-details' stock_x.slug %}">{{ stock_x.name }}</a>
