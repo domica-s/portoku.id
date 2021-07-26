@@ -30,8 +30,8 @@
         </div>
 
         <div class="row">
-            <div class="col-12">
-                <canvas id="lineChart" height="20" width="50"></canvas>
+            <div class="col-6">
+                <canvas id="lineChart" class="canvas-container" height="200" width="500"></canvas>
             </div>
         </div>
     </div>
@@ -73,7 +73,6 @@
             document.getElementById('lineChart'),{
                 type: 'line',
                 data : {
-                    responsive: true,
                     maintainAspectRatio: true, 
                     labels: ['January','February','March','April','May','June'],
                     datasets: [{   
@@ -84,6 +83,7 @@
                     }],
                 },
                 options: {
+                    responsive: false,
                     scales:{
                         yAxes:[{
                             ticks: {
