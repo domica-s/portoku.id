@@ -5,12 +5,13 @@
 {% block title %}Cryptocurrencies{% endblock %}
 
 {% block site_css %}
+    <link href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css" rel="stylesheet">   
 {% endblock %}
 
 {% block content %}
     <div class = "jumbotron">
     <h1>List of cryptocurrencies</h1>
-    <table id="paginationFullNumbers" class="table" width="100%">
+    <table id="paginationFullNumbers" class="table table-paginate" width="100%">
         <thead>
             <tr>
             <th class="th-sm">Name
@@ -60,5 +61,10 @@
 {% endblock %}
 
 {% block javascript%}
-    <script src="{% static 'markets/scripts/stock-view.js' %}"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" charset="utf-8">
+        $(document).ready(function() {
+            $('.table-paginate').dataTable();
+        } );
+    </script>
 {% endblock %}
