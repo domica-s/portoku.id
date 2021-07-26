@@ -33,7 +33,7 @@ def crypto_view(request):
 def stock_view(request):
     stocks = Stock.objects.all()
     return render(request, 'markets/stock.html', {
-        'stocks' : stocks
+        'stocks' : stocks,
     })
 
 def crypto_details(request, coin_slug):

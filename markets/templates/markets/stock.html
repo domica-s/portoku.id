@@ -2,34 +2,69 @@
 
 {% load static %}
 
-{% block title %}Cryptocurrencies{% endblock %}
+{% block title %}Stocks{% endblock %}
 
 {% block site_css %}
+    <link href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css" rel="stylesheet">   
 {% endblock %}
 
 {% block content %}
-    <h1>List of cryptocurrencies</h1>
-    <div class="table-responsive">
-        <table class="table table-striped table-hover table-bordered ">
-            <thead>
+    <div class = "jumbotron">
+    <h1>List of Stocks</h1>
+    <table id="paginationFullNumbers" class="table table-paginate" width="100%">
+        <thead>
+            <tr>
+            <th class="th-sm">Name
+
+            </th>
+            <th class="th-sm">Price
+
+            </th>
+            <th class="th-sm">Industry
+
+            </th>
+            <th class="th-sm">Market Cap
+
+            </th>
+            <th class="th-sm">24h %
+                
+            </tr>
+        </thead>
+        <tbody>
+            {% for stock in stocks %}
                 <tr>
-                    <th scope="col" style="width: 10%">#</th>
-                    <th scope="col" style="width: 40%">Name</th>
-                    <th scope="col" style="width: 50%">Price</th> 
+                    <td><a href="{% url 'stock-details' stock.slug %}">{{ stock.name}}</td>
+                    <td>Rp.{{ stock.price }}</td>
+                    <td>Banking</td>
+                    <td>Rp.123,123,132</td>
+                    <td>12%</td>
                 </tr>
-            </thead>
-            <tbody>
-                {% for stock_x in stocks %}
-                    <tr>
-                        <th scope="row">{{ forloop.counter }}</th>
-                        <td><a href="{% url 'stock-details' stock_x.slug %}">{{ stock_x.fullname}} <small>${{ stock_x.name }}</small></a></td>
-                        <td><a href="{% url 'stock-details' stock_x.slug %}">{{ stock_x.price }}</a></td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>Name
+                </th>
+                <th>Price
+                </th>
+                <th>Industry
+                </th>
+                <th>Market Cap
+                </th>
+                <th>24h %
+                </th>
+            </tr>
+        </tfoot>
+    </table>
     </div>
+    
 {% endblock %}
 
 {% block javascript%}
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" charset="utf-8">
+        $(document).ready(function() {
+            $('.table-paginate').dataTable();
+        } );
+    </script>
 {% endblock %}
