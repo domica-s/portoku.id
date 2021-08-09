@@ -35,9 +35,9 @@
                 <tr style="transform: rotate(0);">
                     <td><a href="{% url 'stock-details' stock.slug %}" class="stretched-link">{{ stock.name}}</a></td>
                     <td>Rp.{{ stock.price }}</td>
-                    <td>Banking</td>
-                    <td>Rp.123,123,132</td>
-                    <td>12%</td>
+                    <td>{{ stock.sector }}</td>
+                    <td>{{ stock.marketCap }}</td>
+                    <td>{{ stock.change24h }}</td>
                 </tr>
             {% endfor %}
         </tbody>
