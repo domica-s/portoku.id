@@ -3,7 +3,8 @@ from pandas.core.resample import f
 
 from .models import Coin
 from .models import Stock
-from .stocksAPI import getFullStockName, getStockGraph, getStockSpotPrice, getStockSummary
+
+from markets import models
 
 from django.http import JsonResponse
 # Create your views here.
@@ -47,12 +48,6 @@ def stock_details(request, stock_slug):
     # ticker = selected_stock.name + ".JK"
     return render(request, 'markets/stock-details.html',
         {
-            # 'name' : selected_stock.name,
-            # 'fullname' : getFullStockName(ticker),
-            # 'slug' : selected_stock.name,
-            # 'price' : getStockSpotPrice(ticker),
-            # 'data' : getStockGraph(ticker),
-            # 'description' : getStockSummary(ticker)
             'stocks' : selected_stock,
         }
     )
@@ -60,7 +55,6 @@ def stock_details(request, stock_slug):
 def getUpdatedStockPrice(request):
     if request.method == 'POST':
         name = request.POST['slug']
-        selected_stock = Stock.objects.get(slug=name.lower())
-        ticker = selected_stock.name + ".JK"
-
-        return JsonResponse({"price": getStockSpotPrice(ticker)})
+        selected_stock = Stock.objects.get(slug=name.upper())
+        
+        return JsonResponse({"price": selected_stock.price})
