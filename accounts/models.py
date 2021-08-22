@@ -3,8 +3,6 @@ from markets.models import Stock, Coin
 from django.contrib.auth.models import AbstractUser
 
 #from .forms import NewUserForm
-
-
  
 # Create your models here.
 class UserProfile(AbstractUser):
