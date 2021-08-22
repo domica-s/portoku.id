@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 
 # Create your forms here.
-
+'''
 class NewUserForm(UserCreationForm):
 	email = forms.EmailField(required=True)
 
@@ -17,4 +17,4 @@ class NewUserForm(UserCreationForm):
 		user.email = self.cleaned_data['email']
 		if commit:
 			user.save()
-		return user
+		return user'''

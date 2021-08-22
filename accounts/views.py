@@ -1,5 +1,5 @@
 from django.shortcuts import  render, redirect
-from .forms import NewUserForm
+#from .forms import NewUserForm
 from django.contrib.auth import login, authenticate, logout 
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
@@ -15,7 +15,7 @@ from django.utils.http import urlsafe_base64_encode
 from django.contrib.auth.tokens import default_token_generator
 from django.utils.encoding import force_bytes
 from django.contrib import messages #import messages
-
+'''
 def register_request(request):
 	if request.method == "POST":
 		form = NewUserForm(request.POST)
@@ -85,3 +85,4 @@ def password_reset_request(request):
 				messages.error(request, 'An invalid email has been entered.')
 	password_reset_form = PasswordResetForm()
 	return render(request=request, template_name="accounts/password_reset.html", context={"password_reset_form":password_reset_form})
+'''
