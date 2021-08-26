@@ -6,5 +6,5 @@ from django.contrib.auth.models import AbstractUser
  
 # Create your models here.
 class UserProfile(AbstractUser):
-    user_stock = models.ManyToManyField(Stock, blank=True, )
-    user_coin = models.ManyToManyField(Coin, blank=True, )
+    user_stock = models.ManyToManyField(Stock, blank=True, null=True)
+    user_coin = models.ManyToManyField(Coin, blank=True, null=True)
